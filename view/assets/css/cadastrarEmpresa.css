@@ -84,6 +84,7 @@ div.modal-conteudo {
     width: 20rem;
 
     & h2.title-form {
+        width: 14.2rem;
         margin: 0 auto;
         font-size: 1.6rem;
     }
@@ -101,7 +102,7 @@ div.modal-conteudo {
         & input{
             width: 15rem;
             padding: 0.3rem;
-            margin-bottom: 1rem;
+            margin-bottom: 0.5rem;
             border: 1px solid black;
             border-radius: 0.5rem;
             font-size: 0.8rem;
@@ -157,17 +158,14 @@ div.modal-conteudo {
 
 
         & button.btn-salvar {
-            /* width: 100%; */
-            padding: 1rem 1.6rem;
-            background-color: #28a745;
+            margin-top: 0.5rem;
+            padding: 0.5rem 1.5rem;
+            background-color: var(--second-color);
             color: #fff;
-            border: none;
+            border: 1px solid black;
             cursor: pointer;
             border-radius: 0.5rem;
-
-            &:hover {
-                background-color: #218838;
-            }
+            font-size: 1rem;
         }
     }
 
