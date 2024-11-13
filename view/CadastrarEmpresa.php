@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="tp-br">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -10,8 +11,9 @@
 
     <title>SmartGestão</title>
 </head>
+
 <body>
-<header class="cabecalho">
+    <header class="cabecalho">
         <div class="itens-logo">
             <img class="logo" src="assets/images/logo.png">
             <h1 class="nome-sistema"><a class="titulo" href="index.php">SmartGestão</a></h1>
@@ -23,5 +25,25 @@
             <a class="link" href="view/relatorios.php">Relatórios</a>
         </div>
     </header>
+
+    <div class="modal" id="modal-cadastro">
+        <div class="modal-conteudo">
+            <span class="fechar">&times;</span>
+            <h2>Cadastro de Empresa</h2>
+            <form>
+                <label for="razao-social">Razão Social</label>
+                <input type="text" id="razao-social" name="razao-social" required>
+
+                <label for="nome-fantasia">Nome Fantasia</label>
+                <input type="text" id="nome-fantasia" name="nome-fantasia" required>
+
+                <label for="cnpj">CNPJ</label>
+                <input type="text" id="cnpj" name="cnpj" required>
+
+                <button type="submit" class="btn-salvar">Salvar</button>
+            </form>
+        </div>
+    </div>
 </body>
+
 </html>
