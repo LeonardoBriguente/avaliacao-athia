@@ -20,9 +20,9 @@
         </div>
 
         <div class="caminhos">
-            <a class="link" href="cadastrarEmpresa.php">Empresas</a>
-            <a class="link link-meio" href="/view/cadastrarSetores.php">Setores</a>
-            <a class="link" href="relatorios.php">Relatórios</a>
+            <a class="link" href="view/cadastrarEmpresa.php">Empresas</a>
+            <a class="link link-meio" href="view/cadastrarSetores.php">Setores</a>
+            <a class="link" href="view/relatorios.php">Relatórios</a>
         </div>
     </header>
 
