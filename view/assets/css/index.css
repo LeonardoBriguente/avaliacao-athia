@@ -110,6 +110,7 @@ div.acesso-rapido{
     width: 60vw;
     display: flex;
     justify-content: space-between;
+    margin-top: 2rem;
 
     & button.btn{
         display: inline-block;
