@@ -83,7 +83,7 @@ div.modal-conteudo {
     transform: translate(-50%, -50%);
     width: 20rem;
 
-    & h2 {
+    & h2.title-form {
         margin: 0 auto;
         font-size: 1.6rem;
     }
@@ -98,11 +98,10 @@ div.modal-conteudo {
             font-weight: bold;
         }
 
-        & input,
-        select {
+        & input{
             width: 15rem;
             padding: 0.3rem;
-            margin-bottom: 1.5rem;
+            margin-bottom: 1rem;
             border: 1px solid black;
             border-radius: 0.5rem;
             font-size: 0.8rem;
@@ -140,13 +139,18 @@ div.modal-conteudo {
                 overflow-y: auto;
             }
 
-            & div.setores-dropdown label {
-                margin-bottom: 1rem;
+            & div.por-setor{
+                display: flex;
+                align-items: center;
+                justify-content: flex-start;
             }
 
             & div.setores-dropdown input {
-                /* margin-right: 0.5rem; */
                 width: 2rem;
+
+                &:hover{
+                    cursor: pointer;
+                }
             }
         }
 

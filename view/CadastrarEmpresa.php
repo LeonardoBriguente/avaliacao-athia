@@ -30,7 +30,7 @@
     <div class="modal" id="modal-cadastro">
         <div class="modal-conteudo">
             <span class="fechar">&times;</span>
-            <h2>Cadastrar Empresa</h2>
+            <h2 class="title-form">Cadastrar Empresa</h2>
             <form>
                 <label for="razao-social">Razão Social</label>
                 <input type="text" id="razao-social" name="razao-social" placeholder="Ex: Fulano LTDA" required>
