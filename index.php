@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="pt-br">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -10,8 +11,9 @@
 
     <title>SmartGestão</title>
 </head>
+
 <body>
-<header class="cabecalho">
+    <header class="cabecalho">
         <div class="itens-logo">
             <img class="logo" src="view/assets/images/logo.png">
             <h1 class="nome-sistema"><a class="titulo" href="index.php">SmartGestão</a></h1>
@@ -24,5 +26,22 @@
         </div>
     </header>
 
+    <main>
+        <Section class="cards">
+            <div class="card1">
+                <p class="numero-empresa"></p>
+                <p class="texto-chave"></p>
+                <p class="texto complementar"></p>
+            </div>
+
+            <div class="card2">
+                <p class="numero-empresa"></p>
+                <p class="texto-chave"></p>
+                <p class="texto complementar"></p>
+            </div>
+        </Section>
+    </main>
+
 </body>
+
 </html>
