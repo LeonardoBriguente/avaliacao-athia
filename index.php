@@ -27,19 +27,21 @@
     </header>
 
     <main>
-        <Section class="cards">
-            <div class="card1">
-                <p class="numero-empresa"></p>
-                <p class="texto-chave"></p>
-                <p class="texto complementar"></p>
+        <Section class="todos-cards">
+            <div class="card">
+                <p class="numero-principal">57</p>
+                <p class="texto-chave">Empresas</p>
+                <p class="texto-complementar">gerenciadas pela plataforma</p>
             </div>
 
-            <div class="card2">
-                <p class="numero-empresa"></p>
-                <p class="texto-chave"></p>
-                <p class="texto complementar"></p>
+            <div class="card">
+                <p class="numero-principal">60</p>
+                <p class="texto-chave">Setores</p>
+                <p class="texto-complementar">cadastrados na plataforma</p>
             </div>
         </Section>
+
+        <p class="mensagem">Sua gestão de maneira rápida e eficaz!</p>
     </main>
 
 </body>
