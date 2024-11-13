@@ -47,23 +47,23 @@
                         <span id="setores-text">Selecionar setores</span>
                     </div>
                     <div class="setores-dropdown">
-                        <label>
+                        <label class="dropdown">
                             <input type="checkbox" name="setores" value="administrativo">
                             Administrativo
                         </label>
-                        <label>
+                        <label class="dropdown">
                             <input type="checkbox" name="setores" value="financeiro">
                             Financeiro
                         </label>
-                        <label>
+                        <label class="dropdown">
                             <input type="checkbox" name="setores" value="marketing">
                             Marketing
                         </label>
-                        <label>
+                        <label class="dropdown">
                             <input type="checkbox" name="setores" value="tecnologia">
                             Tecnologia
                         </label>
-                        <label>
+                        <label class="dropdown">
                             <input type="checkbox" name="setores" value="recursos-humanos">
                             Recursos Humanos
                         </label>

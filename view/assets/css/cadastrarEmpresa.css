@@ -95,8 +95,6 @@ div.modal-conteudo {
         justify-content: center;
 
         & label {
-            /* display: block; */
-            /* margin-bottom: 0.5rem; */
             font-weight: bold;
         }
 
@@ -110,13 +108,14 @@ div.modal-conteudo {
             font-size: 0.8rem;
         }
 
-        div.setores-container {
+        & div.setores-container {
             position: relative;
         }
 
-        div.setores-selecionados {
+        & div.setores-selecionados {
+            width: 15rem;
             background-color: #f0f0f0;
-            padding: 1rem;
+            padding: 0.5rem;
             border-radius: 0.5rem;
             cursor: pointer;
             font-size: 1rem;
@@ -126,7 +125,7 @@ div.modal-conteudo {
             align-items: center;
         }
 
-        div.setores-dropdown {
+        & div.setores-dropdown {
             display: none;
             position: absolute;
             top: 100%;
@@ -142,12 +141,14 @@ div.modal-conteudo {
             overflow-y: auto;
         }
 
-        div.setores-dropdown label {
+        & div.setores-dropdown label {
+            display: flex;
             margin-bottom: 1rem;
         }
 
-        div.setores-dropdown input {
-            margin-right: 0.5rem;
+        & div.setores-dropdown input {
+            /* margin-right: 0.5rem; */
+            width: 2rem;
         }
 
         & button.btn-salvar {
