@@ -14,6 +14,11 @@ html {
     font-family: 'Nunito', sans-serif;
 }
 
+& a {
+    text-decoration: none;
+    color: #ffffff;
+}
+
 header.cabecalho {
     width: 100%;
     height: auto;
@@ -36,11 +41,6 @@ header.cabecalho {
         & h1.nome-sistema {
             color: #ffffff;
         }
-    }
-
-    & a {
-        text-decoration: none;
-        color: #ffffff;
     }
 
     & div.caminhos {
@@ -99,5 +99,17 @@ section.todos-cards{
             font-size: 1.3rem;
             text-align: center;
         }
+    }
+}
+
+p.mensagem{
+    margin-top: 2.5rem;
+}
+
+div.acesso-rapido{
+
+
+    & button.btn{
+        
     }
 }

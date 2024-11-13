@@ -42,6 +42,12 @@
         </Section>
 
         <p class="mensagem">Sua gestão de maneira rápida e eficaz!</p>
+
+        <div class="acesso=rapido">
+            <button class="btn"><a href="view/cadastrarEmpresa.php">Cadastrar Empresa</a></button>
+            <button class="btn"><a href="view/cadastrarSetores.php">Cadastrar Setores</a></button>
+            <button class="btn"><a href="view/relatorios.php">Visualizar Relatórios</a></button>
+        </div>
     </main>
 
 </body>
