@@ -8,6 +8,7 @@
     <meta name="author" content="Leonardo Briguente">
     <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" type="text/css" href="assets/css/cadastrarEmpresa.css">
+    <script type="text/javascript" src="assets/js/cadastroEmpresa.js" defer></script>
 
     <title>SmartGestão</title>
 </head>
