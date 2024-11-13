@@ -1,9 +1,10 @@
-:root{
+:root {
     --primary-color: #023E8A;
     --second-color: #0077B6;
 }
 
-html, body {
+html,
+body {
     height: 100vh;
 }
 
@@ -13,33 +14,47 @@ html, body {
     font-family: 'Nunito', sans-serif;
 }
 
-header.cabecalho{
+header.cabecalho {
     width: 100%;
     height: auto;
     background-color: var(--primary-color);
     display: flex;
     align-items: center;
+    justify-content: space-between;
 
-    & img.logo{
-        width: 4rem;
-        height: auto;
-        margin: 3px 1rem 
+    & div.itens-logo {
+        display: flex;
+        align-items: center;
+
+        & img.logo {
+            width: 4rem;
+            height: auto;
+            margin: 3px 1rem
+        }
+
+        & h1.nome-sistema {
+            color: #ffffff;
+            /* margin-right: 3rem; */
+        }
     }
 
-    & h1.nome-sistema{
-        color: #ffffff;
-        margin-right: 3rem;
-    }
-
-    & a{
+    & a {
         text-decoration: none;
         color: #ffffff;
     }
 
-    & a.link{
-        font-size: 1.5rem;
+    & div.caminhos {
+        position: relative;
+        
+
+        & a.link {
+            font-size: 1.5rem;
+        }
+
+        & a.link-meio {
+            margin: 0 1.5rem;
+        }
     }
-    & a.link-meio{
-        margin: 0 1.5rem;
-    }
+
+
 }
