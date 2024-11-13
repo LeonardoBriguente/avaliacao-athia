@@ -17,6 +17,7 @@ body {
 header.cabecalho {
     width: 100%;
     height: auto;
+    position: relative;
     background-color: var(--primary-color);
     display: flex;
     align-items: center;
@@ -34,7 +35,6 @@ header.cabecalho {
 
         & h1.nome-sistema {
             color: #ffffff;
-            /* margin-right: 3rem; */
         }
     }
 
@@ -44,8 +44,7 @@ header.cabecalho {
     }
 
     & div.caminhos {
-        position: relative;
-        
+        margin-right: 3rem;
 
         & a.link {
             font-size: 1.5rem;
