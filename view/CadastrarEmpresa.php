@@ -43,30 +43,44 @@
 
                 <label for="setores">Setores</label>
                 <div class="setores-container">
-                    <div class="setores-selecionados" onclick="toggleSetoresDropdown()">
+                    <div class="selecionar-setor" onclick="toggleSetoresDropdown()">
                         <span id="setores-text">Selecionar setores</span>
                     </div>
                     <div class="setores-dropdown">
-                        <label class="dropdown">
-                            <input type="checkbox" name="setores" value="administrativo">
-                            Administrativo
-                        </label>
+                        <div class="por-setor">
+                            <label class="dropdown">
+                                <input type="checkbox" name="setores" value="administrativo">
+                                Administrativo
+                            </label>
+                        </div>
+
+                        <div class="por-setor">
                         <label class="dropdown">
                             <input type="checkbox" name="setores" value="financeiro">
                             Financeiro
                         </label>
+                        </div>
+
+                        <div class="por-setor">
                         <label class="dropdown">
                             <input type="checkbox" name="setores" value="marketing">
                             Marketing
                         </label>
+                        </div>
+
+                        <div class="por-setor">
                         <label class="dropdown">
                             <input type="checkbox" name="setores" value="tecnologia">
                             Tecnologia
                         </label>
+                        </div>
+
+                        <div class="por-setor">
                         <label class="dropdown">
                             <input type="checkbox" name="setores" value="recursos-humanos">
                             Recursos Humanos
                         </label>
+                        </div>
                     </div>
                 </div>
 
