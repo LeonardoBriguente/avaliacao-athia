@@ -28,10 +28,12 @@
     </header>
 
     <h1>Cadastro de empresas</h1>
+    <button type="button" class="btn-cadastrar" onclick="abrirModal()">Cadastrar Empresa</button>
+
 
     <section class="modal" id="modal-cadastro">
         <div class="modal-conteudo">
-            <span class="fechar">&times;</span>
+            <span class="fechar" onclick="fecharModal()">&times;</span>
             <h2 class="title-form">Cadastrar Empresa</h2>
             <form>
                 <label for="razao-social">Razão Social</label>

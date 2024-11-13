@@ -1,48 +1,65 @@
-// Função para alternar a visibilidade do dropdown dos setores
-function toggleSetoresDropdown() {
-    const dropdown = document.querySelector('.setores-dropdown');
-    dropdown.style.display = (dropdown.style.display === 'flex' ? 'none' : 'flex');
-}
+class ModalCadastro {
+    constructor() {
+        this.modalElement = document.querySelector('.modal');
+        this.dropdown = document.querySelector('.setores-dropdown');
+        this.textElement = document.getElementById('setores-text');
+        this.checkboxes = document.querySelectorAll('input[name="setores"]');
+        this.container = document.querySelector('.setores-container');
 
-// Função para atualizar o texto do botão com os setores selecionados
-function atualizarSetoresSelecionados() {
-    // Obtém todas as checkboxes que estão marcadas
-    const selectedSetores = Array.from(document.querySelectorAll('input[name="setores"]:checked'))
-        .map(input => input.parentElement.textContent.trim());
+        this._initializeEvents();
+    }
 
-    // Atualiza o texto do botão de setores
-    const textElement = document.getElementById('setores-text');
-    if (selectedSetores.length > 0) {
-        textElement.textContent = selectedSetores.join(', ');
-    } else {
-        textElement.textContent = 'Selecionar setores';
+    _initializeEvents() {
+        this.checkboxes.forEach(checkbox => {
+            checkbox.addEventListener('change', () => this.atualizarSetoresSelecionados());
+        });
+
+        document.addEventListener('click', (event) => {
+            if (!this.container.contains(event.target)) {
+                this.dropdown.style.display = 'none';
+            }
+        });
+    }
+
+    toggleSetoresDropdown() {
+        this.dropdown.style.display = (this.dropdown.style.display === 'flex' ? 'none' : 'flex');
+    }
+
+    atualizarSetoresSelecionados() {
+        const selectedSetores = Array.from(document.querySelectorAll('input[name="setores"]:checked'))
+                                     .map(input => input.parentElement.textContent.trim());
+
+        if (selectedSetores.length > 0) {
+            this.textElement.textContent = selectedSetores.join(', ');
+        } else {
+            this.textElement.textContent = 'Selecionar setores';
+        }
+    }
+
+    abrirModal() {
+        this.modalElement.classList.add('ativo');
+    }
+
+    fecharModal() {
+        this.modalElement.classList.remove('ativo');
     }
 }
 
-// Função para fechar o modal
-function fecharModal() {
-    document.querySelector('.modal').classList.remove('ativo');
-}
+document.addEventListener('DOMContentLoaded', () => {
+    const modalCadastro = new ModalCadastro();
 
-// Função para abrir o modal
-function abrirModal() {
-    document.querySelector('.modal').classList.add('ativo');
-}
+    const btnAbrirModal = document.querySelector('.btn-cadastrar');
+    if (btnAbrirModal) {
+        btnAbrirModal.addEventListener('click', () => modalCadastro.abrirModal());
+    }
 
-// Adiciona eventos para o comportamento do dropdown dos setores
-document.addEventListener('DOMContentLoaded', function () {
-    // Adiciona o evento de clique para cada checkbox no dropdown dos setores
-    const checkboxes = document.querySelectorAll('input[name="setores"]');
-    checkboxes.forEach(checkbox => {
-        checkbox.addEventListener('change', atualizarSetoresSelecionados);
-    });
+    const btnFecharModal = document.querySelector('.fechar');
+    if (btnFecharModal) {
+        btnFecharModal.addEventListener('click', () => modalCadastro.fecharModal());
+    }
 
-    // Fecha o dropdown ao clicar fora dele
-    document.addEventListener('click', function (event) {
-        const dropdown = document.querySelector('.setores-dropdown');
-        const container = document.querySelector('.setores-container');
-        if (!container.contains(event.target)) {
-            dropdown.style.display = 'none';
-        }
-    });
+    const btnToggleDropdown = document.querySelector('.setores-container');
+    if (btnToggleDropdown) {
+        btnToggleDropdown.addEventListener('click', () => modalCadastro.toggleSetoresDropdown());
+    }
 });
