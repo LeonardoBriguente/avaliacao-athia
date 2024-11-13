@@ -81,45 +81,92 @@ div.modal-conteudo {
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    width: 30rem;
-    /* max-width: 40rem; */
+    width: 20rem;
 
-    h2 {
-        margin-top: 0;
-        margin-bottom: 2rem;
+    & h2 {
+        margin: 0 auto;
         font-size: 1.6rem;
     }
 
-    label {
-        display: block;
-        margin-bottom: 0.5rem;
-        font-weight: bold;
-    }
+    & form {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
 
-    input {
-        width: 100%;
-        padding: 1rem;
-        margin-bottom: 1.5rem;
-        border: 1px solid #ccc;
-        border-radius: 0.5rem;
-        font-size: 1rem;
-    }
+        & label {
+            /* display: block; */
+            /* margin-bottom: 0.5rem; */
+            font-weight: bold;
+        }
 
-    button.btn-salvar {
-        padding: 1rem 1.6rem;
-        background-color: #28a745;
-        color: #fff;
-        border: none;
-        cursor: pointer;
-        border-radius: 0.5rem;
-        width: 100%;
+        & input,
+        select {
+            width: 15rem;
+            padding: 0.3rem;
+            margin-bottom: 1.5rem;
+            border: 1px solid black;
+            border-radius: 0.5rem;
+            font-size: 0.8rem;
+        }
 
-        &:hover {
-            background-color: #218838;
+        div.setores-container {
+            position: relative;
+        }
+
+        div.setores-selecionados {
+            background-color: #f0f0f0;
+            padding: 1rem;
+            border-radius: 0.5rem;
+            cursor: pointer;
+            font-size: 1rem;
+            border: 1px solid #ccc;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        div.setores-dropdown {
+            display: none;
+            position: absolute;
+            top: 100%;
+            left: 0;
+            right: 0;
+            background-color: #fff;
+            box-shadow: 0px 0px 0.5rem rgba(0, 0, 0, 0.3);
+            padding: 1rem;
+            border-radius: 0.5rem;
+            z-index: 999;
+            flex-direction: column;
+            max-height: 200px;
+            overflow-y: auto;
+        }
+
+        div.setores-dropdown label {
+            margin-bottom: 1rem;
+        }
+
+        div.setores-dropdown input {
+            margin-right: 0.5rem;
+        }
+
+        & button.btn-salvar {
+            /* width: 100%; */
+            padding: 1rem 1.6rem;
+            background-color: #28a745;
+            color: #fff;
+            border: none;
+            cursor: pointer;
+            border-radius: 0.5rem;
+
+            &:hover {
+                background-color: #218838;
+            }
         }
     }
 
-    span.fechar {
+
+    & span.fechar {
         position: absolute;
         top: 1rem;
         right: 1rem;

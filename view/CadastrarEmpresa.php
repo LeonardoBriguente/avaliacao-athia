@@ -29,18 +29,47 @@
     <div class="modal" id="modal-cadastro">
         <div class="modal-conteudo">
             <span class="fechar">&times;</span>
-            <h2>Cadastro de Empresa</h2>
+            <h2>Cadastrar Empresa</h2>
             <form>
                 <label for="razao-social">Razão Social</label>
-                <input type="text" id="razao-social" name="razao-social" required>
-
-                <label for="nome-fantasia">Nome Fantasia</label>
-                <input type="text" id="nome-fantasia" name="nome-fantasia" required>
+                <input type="text" id="razao-social" name="razao-social" placeholder="Ex: Fulano LTDA" required>
 
                 <label for="cnpj">CNPJ</label>
-                <input type="text" id="cnpj" name="cnpj" required>
+                <input type="text" id="cnpj" name="cnpj" placeholder="xx.xxx.xxx/xxxx-xx" required>
 
-                <button type="submit" class="btn-salvar">Salvar</button>
+                <label for="nome-fantasia">Nome Fantasia</label>
+                <input type="text" id="nome-fantasia" name="nome-fantasia" placeholder="Ex: Amazon">
+
+                <label for="setores">Setores</label>
+                <div class="setores-container">
+                    <div class="setores-selecionados" onclick="toggleSetoresDropdown()">
+                        <span id="setores-text">Selecionar setores</span>
+                    </div>
+                    <div class="setores-dropdown">
+                        <label>
+                            <input type="checkbox" name="setores" value="administrativo">
+                            Administrativo
+                        </label>
+                        <label>
+                            <input type="checkbox" name="setores" value="financeiro">
+                            Financeiro
+                        </label>
+                        <label>
+                            <input type="checkbox" name="setores" value="marketing">
+                            Marketing
+                        </label>
+                        <label>
+                            <input type="checkbox" name="setores" value="tecnologia">
+                            Tecnologia
+                        </label>
+                        <label>
+                            <input type="checkbox" name="setores" value="recursos-humanos">
+                            Recursos Humanos
+                        </label>
+                    </div>
+                </div>
+
+                <button type="submit" class="btn-salvar">Cadastrar</button>
             </form>
         </div>
     </div>
