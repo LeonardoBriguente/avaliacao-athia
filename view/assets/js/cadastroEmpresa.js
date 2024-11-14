@@ -1,6 +1,6 @@
 class ModalCadastro {
     constructor() {
-        this.modalElement = document.querySelector('.modal');
+        this.modalElement = document.querySelector('.modal#modal-cadastro');
         this.dropdown = document.querySelector('.setores-dropdown');
         this.textElement = document.getElementById('setores-text');
         this.checkboxes = document.querySelectorAll('input[name="setores"]');
@@ -27,7 +27,7 @@ class ModalCadastro {
 
     atualizarSetoresSelecionados() {
         const selectedSetores = Array.from(document.querySelectorAll('input[name="setores"]:checked'))
-                                     .map(input => input.parentElement.textContent.trim());
+            .map(input => input.parentElement.textContent.trim());
 
         if (selectedSetores.length > 0) {
             this.textElement.textContent = selectedSetores.join(', ');
@@ -45,8 +45,28 @@ class ModalCadastro {
     }
 }
 
+class ModalEdicao extends ModalCadastro {
+    constructor() {
+        super();
+        this.modalElement = document.querySelector('.modal#modal-edicao');
+    }
+
+    abrirModal(empresa, setores) {
+        document.getElementById('edicao-razao-social').value = empresa;
+        document.getElementById('edicao-setores-text').textContent = setores;
+
+        const selectedSetores = setores.split(', ').map(setor => setor.toLowerCase().trim());
+        this.checkboxes.forEach(checkbox => {
+            checkbox.checked = selectedSetores.includes(checkbox.value.toLowerCase());
+        });
+
+        super.abrirModal();
+    }
+}
+
 class TabelaEmpresas {
     constructor() {
+        this.modalEdicao = new ModalEdicao();
         this.init();
     }
 
@@ -82,11 +102,7 @@ class TabelaEmpresas {
         const empresaCell = row.cells[0];
         const setoresCell = row.cells[1];
 
-        const novaEmpresa = prompt('Editar Empresa:', empresaCell.textContent);
-        const novoSetor = prompt('Editar Setores:', setoresCell.textContent);
-
-        if (novaEmpresa !== null) empresaCell.textContent = novaEmpresa;
-        if (novoSetor !== null) setoresCell.textContent = novoSetor;
+        this.modalEdicao.abrirModal(empresaCell.textContent, setoresCell.textContent);
     }
 
     excluirLinha(event) {
@@ -98,11 +114,10 @@ class TabelaEmpresas {
 }
 
 document.addEventListener('DOMContentLoaded', () => {
-
     const modalCadastro = new ModalCadastro();
     const tabelaEmpresas = new TabelaEmpresas();
 
-    // Eventos do modal
+    // Eventos do modal de cadastro
     const btnAbrirModal = document.querySelector('.btn-cadastrar');
     if (btnAbrirModal) {
         btnAbrirModal.addEventListener('click', () => modalCadastro.abrirModal());

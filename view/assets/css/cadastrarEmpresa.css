@@ -266,10 +266,10 @@ section.tabela {
     }
     
     & button.editar:hover {
-        color: #28a745; /* Verde para o hover no botão de editar */
+        color: #28a745;
     }
     
     & button.excluir:hover {
-        color: #dc3545; /* Vermelho para o hover no botão de excluir */
+        color: #dc3545;
     }
 }
