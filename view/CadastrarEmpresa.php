@@ -37,7 +37,7 @@
         <div class="modal-conteudo">
             <span class="fechar" onclick="fecharModal()">&times;</span>
             <h2 class="title-form">Cadastrar Empresa</h2>
-            <form>
+            <form action="../controller/EmpresaController.php" method="post">
                 <label for="razao-social">Razão Social</label>
                 <input type="text" id="razao-social" name="razao-social" placeholder="Ex: Fulano LTDA" required>
 

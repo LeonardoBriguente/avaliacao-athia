@@ -14,9 +14,9 @@ class EmpresaController
         $this->empresa = new Empresa($db);
     }
 
-    public function createEmpresa($razao_social, $nome_fantasia, $cnpj)
+    public function createEmpresa($razao_social, $nome_fantasia, $cnpj, $setores)
     {
-        if ($this->empresa->Cadastrar($razao_social, $nome_fantasia, $cnpj)) {
+        if ($this->empresa->Cadastrar($razao_social, $nome_fantasia, $cnpj, $setores)) {
             echo "<script type='text/javascript'>alert('Cadastro realizado com sucesso.');</script>";
             echo "<script type='text/javascript'>window.location.href = '../view/cadastrarEmpresas.php';</script>";
             exit();
@@ -112,7 +112,9 @@ class EmpresaController
                     $razao_social = $_POST['razao_social'];
                     $nome_fantasia = $_POST['nome_fantasia'];
                     $cnpj = $_POST['cnpj'];
-                    $this->createEmpresa($razao_social, $nome_fantasia, $cnpj);
+                    $setores = isset($_POST['setores']) ? implode(',', $_POST['setores']) : '';
+
+                    $this->createEmpresa($razao_social, $nome_fantasia, $cnpj, $setores);
                     break;
 
                 case 'editar':
@@ -122,7 +124,6 @@ class EmpresaController
                     $cnpj = $_POST['cnpj'];
                     $this->atualizarEmpresa($id, $razao_social, $nome_fantasia, $cnpj);
                     break;
-
             }
         }
 
@@ -131,8 +132,6 @@ class EmpresaController
             $this->excluirEmpresa($id);
         }
     }
-
-    
 }
 
 $controller = new EmpresaController();
