@@ -69,66 +69,30 @@ $tabela = $controller->listarSetores();
     <section class="modal" id="modal-edicao">
         <div class="modal-conteudo">
             <span class="fechar" onclick="fecharModal()">&times;</span>
-            <h2 class="title-form">Editar Empresa</h2>
-            <form>
-                <label for="edicao-razao-social">Razão Social</label>
-                <input type="text" id="edicao-razao-social" name="edicao-razao-social" placeholder="Ex: Fulano LTDA" required>
+            <h2 class="title-form">Editar Setor</h2>
+            <form id="form-edicao" method="post" action="../controller/SetorController.php">
+                <input type="hidden" name="acao" value="editar">
+                <input type="hidden" id="id-setor-edicao" name="id">
 
-                <label for="edicao-cnpj">CNPJ</label>
-                <input type="text" id="edicao-cnpj" name="edicao-cnpj" placeholder="xx.xxx.xxx/xxxx-xx" required>
-
-                <label for="edicao-nome-fantasia">Nome Fantasia</label>
-                <input type="text" id="edicao-nome-fantasia" name="edicao-nome-fantasia" placeholder="Ex: Amazon">
-
-                <label for="edicao-setores">Setores</label>
-                <div class="setores-container">
-                    <div class="selecionar-setor" onclick="toggleSetoresDropdown()">
-                        <span id="edicao-setores-text">Selecionar setores</span>
-                    </div>
-                    <div class="setores-dropdown">
-                        <div class="setores-dropdown">
-                            <div class="por-setor">
-                                <label class="dropdown">
-                                    <input type="checkbox" name="setores" value="administrativo">
-                                    Administrativo
-                                </label>
-                            </div>
-
-                            <div class="por-setor">
-                                <label class="dropdown">
-                                    <input type="checkbox" name="setores" value="financeiro">
-                                    Financeiro
-                                </label>
-                            </div>
-
-                            <div class="por-setor">
-                                <label class="dropdown">
-                                    <input type="checkbox" name="setores" value="marketing">
-                                    Marketing
-                                </label>
-                            </div>
-
-                            <div class="por-setor">
-                                <label class="dropdown">
-                                    <input type="checkbox" name="setores" value="tecnologia">
-                                    Tecnologia
-                                </label>
-                            </div>
-
-                            <div class="por-setor">
-                                <label class="dropdown">
-                                    <input type="checkbox" name="setores" value="recursos-humanos">
-                                    Recursos Humanos
-                                </label>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+                <label for="descricao-edicao">Descrição do Setor</label>
+                <input type="text" id="descricao-edicao" name="descricao" required>
 
                 <button type="submit" class="btn-salvar">Salvar Alterações</button>
             </form>
         </div>
     </section>
+
+    <script>
+        function abrirModalEdicao(id, descricao) {
+            document.getElementById('id-setor-edicao').value = id;
+            document.getElementById('descricao-edicao').value = descricao;
+            document.getElementById('modal-edicao').style.display = 'block';
+        }
+
+        function fecharModal() {
+            document.getElementById('modal-edicao').style.display = 'none';
+        }
+    </script>
 
 </body>
 

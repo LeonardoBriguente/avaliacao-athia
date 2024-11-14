@@ -40,36 +40,36 @@ class SetorController
             $id = $row['id'];
             $descricao = $row['descricao'];
 
+            $editarLink = "<button class='editar' onclick=\"abrirModalEdicao('$id', '$descricao')\"><i class='fas fa-edit'></i></button>";
 
-            $excluirLink = "<a class='icon-trash' href='../controller/SetorController.php?acao=excluir&id=$id' onclick='return confirm(\"Você tem certeza que deseja excluir?\")'>
-                                <i class='fas fa-trash-alt'></i>
-                             </a>";
+            $excluirLink = "<a class='icon-trash' href='?acao=excluir&id=$id' onclick='return confirm(\"Você tem certeza que deseja excluir?\")'>
+                            <i class='fas fa-trash-alt'></i>
+                        </a>";
 
             $tabelaHTML .= "
-                <tr>
-                    <td>$descricao</td>
-                    <td>
-                        <button class='editar' onclick='editarLinha(this)'><i class='fas fa-edit'></i></button>
-                        $excluirLink
-                    </td>
-                </tr>
-            ";
+            <tr>
+                <td>$descricao</td>
+                <td>
+                    $editarLink
+                    $excluirLink
+                </td>
+            </tr>
+        ";
         }
 
-
         $tabelaHTML = "
-            <table>
-                <thead>
-                    <tr>
-                        <th>Setores</th>
-                        <th>Ações</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    $tabelaHTML
-                </tbody>
-            </table>
-        ";
+        <table>
+            <thead>
+                <tr>
+                    <th>Setores</th>
+                    <th>Ações</th>
+                </tr>
+            </thead>
+            <tbody>
+                $tabelaHTML
+            </tbody>
+        </table>
+    ";
 
         return $tabelaHTML;
     }
@@ -112,4 +112,3 @@ class SetorController
 
 $controller = new SetorController();
 $controller->verificarAcao();
-?>

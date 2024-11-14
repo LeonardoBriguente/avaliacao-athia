@@ -64,7 +64,7 @@ header.cabecalho {
 }
 
 a.icon-trash{
-    color: black;
+    color: var(--primary-color);
 
     &:hover{
         color: #dc3545
