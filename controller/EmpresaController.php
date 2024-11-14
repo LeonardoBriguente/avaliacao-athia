@@ -87,7 +87,7 @@ public function atualizarEmpresa($id, $razao_social, $nome_fantasia, $cnpj)
 {
     if ($this->empresa->Atualizar($id, $razao_social, $nome_fantasia, $cnpj)) {
         echo "<script type='text/javascript'>alert('Atualização realizada com sucesso.');</script>";
-        echo "<script type='text/javascript'>window.location.href = '../view/cadastrarEmpresa.php';</script>";
+        echo "<script type='text/javascript'>window.location.href = '../view/cadastrarEmpresas.php';</script>";
         exit();
     } else {
         echo "<script type='text/javascript'>alert('Falha ao atualizar a empresa.');</script>";
