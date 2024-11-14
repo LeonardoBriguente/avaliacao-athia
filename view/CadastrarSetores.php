@@ -30,14 +30,16 @@
 
     <main>
         <h1 class="titulo-page">Cadastro de setores</h1>
-        <form>
+        <form action="../controller/setorController.php" method="post">
+            <input type="hidden" name="acao" value="cadastrar">
             <label for="descricao">Setor:</label>
             <input type="text" id="descricao" name="descricao" placeholder="Ex: Recursos Humanos" required>
+
+            <button type="submit" class="btn-cadastrar">Cadastrar setor</button>
         </form>
-        <button type="submit" class="btn-cadastrar">Cadastrar setor</button>
     </main>
 
-    
+
 
     <hr>
 

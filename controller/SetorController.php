@@ -1,7 +1,7 @@
 <?php
 
-require_once 'Database.php';
-require_once 'Setor.php';
+require_once './model/database.php';
+require_once './model/setor.php';
 
 class SetorController
 {
@@ -32,4 +32,24 @@ class SetorController
         }
     }
 }
-?>
+
+if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['acao'])) {
+    $controller = new SetorController();
+
+    switch ($_POST['acao']) {
+        case 'cadastrar':
+            $resultado = $controller->createSetor($_POST);
+
+            if ($resultado == true) {
+                echo $resultado;
+            }
+            break;
+
+
+            // Adicione mais casos conforme necessário
+        default:
+            $resultado = "false";
+            break;
+    }
+    echo $resultado;
+}
