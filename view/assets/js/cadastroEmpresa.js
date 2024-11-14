@@ -45,9 +45,64 @@ class ModalCadastro {
     }
 }
 
-document.addEventListener('DOMContentLoaded', () => {
-    const modalCadastro = new ModalCadastro();
+class TabelaEmpresas {
+    constructor() {
+        this.init();
+    }
 
+    init() {
+        this.bindEvents();
+    }
+
+    bindEvents() {
+        document.addEventListener('DOMContentLoaded', () => {
+            this.inicializarEdicao();
+            this.inicializarExclusao();
+        });
+    }
+
+    inicializarEdicao() {
+        const editarButtons = document.querySelectorAll('.editar');
+
+        editarButtons.forEach(button => {
+            button.addEventListener('click', (event) => this.editarLinha(event));
+        });
+    }
+
+    inicializarExclusao() {
+        const excluirButtons = document.querySelectorAll('.excluir');
+
+        excluirButtons.forEach(button => {
+            button.addEventListener('click', (event) => this.excluirLinha(event));
+        });
+    }
+
+    editarLinha(event) {
+        const row = event.target.closest('tr');
+        const empresaCell = row.cells[0];
+        const setoresCell = row.cells[1];
+
+        const novaEmpresa = prompt('Editar Empresa:', empresaCell.textContent);
+        const novoSetor = prompt('Editar Setores:', setoresCell.textContent);
+
+        if (novaEmpresa !== null) empresaCell.textContent = novaEmpresa;
+        if (novoSetor !== null) setoresCell.textContent = novoSetor;
+    }
+
+    excluirLinha(event) {
+        const row = event.target.closest('tr');
+        if (confirm('Deseja excluir esta linha?')) {
+            row.remove();
+        }
+    }
+}
+
+document.addEventListener('DOMContentLoaded', () => {
+
+    const modalCadastro = new ModalCadastro();
+    const tabelaEmpresas = new TabelaEmpresas();
+
+    // Eventos do modal
     const btnAbrirModal = document.querySelector('.btn-cadastrar');
     if (btnAbrirModal) {
         btnAbrirModal.addEventListener('click', () => modalCadastro.abrirModal());
