@@ -109,4 +109,7 @@ class SetorController
         }
     }
 }
+
+$controller = new SetorController();
+$controller->verificarAcao();
 ?>

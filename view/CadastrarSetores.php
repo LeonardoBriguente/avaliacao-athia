@@ -4,7 +4,7 @@ session_start();
 require_once '../controller/SetorController.php';
 
 $controller = new SetorController();
-$controller->verificarAcao();
+// $controller->verificarAcao();
 
 $tabela = $controller->listarSetores();
 ?>
