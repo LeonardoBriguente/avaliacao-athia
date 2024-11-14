@@ -38,15 +38,13 @@ class Setor
         return $stmt;
     }
 
-    public function ConsultarPorId()
+    public function Excluir($id)
     {
-        $query = "SELECT id, descricao FROM setor WHERE id = :id";
-
+        $query = "DELETE FROM setor WHERE id = :id";
         $stmt = $this->pdo->prepare($query);
-        $stmt->bindParam(":id", $this->id);
-        $stmt->execute();
+        $stmt->bindParam(':id', $id);
 
-        return $stmt;
+        return $stmt->execute();
     }
 }
 ?>
