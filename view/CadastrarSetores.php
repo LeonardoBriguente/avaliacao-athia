@@ -29,7 +29,7 @@ $tabela = $controller->listarSetores();
     <header class="cabecalho">
         <div class="itens-logo">
             <img class="logo" src="assets/images/logo.png">
-            <h1 class="nome-sistema"><a class="titulo" href="index.php">SmartGestão</a></h1>
+            <h1 class="nome-sistema"><a class="titulo" href="../index.php">SmartGestão</a></h1>
         </div>
 
         <div class="caminhos">
