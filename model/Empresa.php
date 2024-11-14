@@ -11,21 +11,33 @@ class Empresa
         $this->pdo = $db;
     }
 
-    public function Cadastrar($razao_social, $nome_fantasia, $cnpj)
+    public function Cadastrar($razao_social, $nome_fantasia, $cnpj, $setores)
     {
         $query = "INSERT INTO empresa (razao_social, nome_fantasia, cnpj) VALUES (:razao_social, :nome_fantasia, :cnpj)";
-
         $stmt = $this->pdo->prepare($query);
 
-        $stmt->bindParam(":razao_social", $razao_social);
-        $stmt->bindParam(":nome_fantasia", $nome_fantasia);
-        $stmt->bindParam(":cnpj", $cnpj);
+        $stmt->bindParam(':razao_social', $razao_social);
+        $stmt->bindParam(':nome_fantasia', $nome_fantasia);
+        $stmt->bindParam(':cnpj', $cnpj);
 
         if ($stmt->execute()) {
+            $empresaId = $this->pdo->lastInsertId();
+            foreach ($setores as $setor) {
+                $this->AssociarSetorAEmpresa($empresaId, $setor);
+            }
             return true;
         }
 
         return false;
+    }
+
+    private function AssociarSetorAEmpresa($empresaId, $setor)
+    {
+        $query = "INSERT INTO empresa_setor (empresa_id, setor_id) VALUES (:empresa_id, :setor_id)";
+        $stmt = $this->pdo->prepare($query);
+        $stmt->bindParam(':empresa_id', $empresaId);
+        $stmt->bindParam(':setor_id', $setor);
+        $stmt->execute();
     }
 
     public function ConsultarTodas()
@@ -67,5 +79,13 @@ class Empresa
         return false;
     }
     
+    public function ConsultarSetoresPorEmpresa($empresaId)
+    {
+        $query = "SELECT descricao FROM setores WHERE empresa_id = :empresa_id";
+        $stmt = $this->pdo->prepare($query);
+        $stmt->bindParam(':empresa_id', $empresaId);
+        $stmt->execute();
+        return $stmt;
+    }
 }
 ?>
