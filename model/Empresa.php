@@ -28,7 +28,7 @@ class Empresa
         return false;
     }
 
-    public function ConultarTodos()
+    public function ConsultarTodas()
     {
         $query = "SELECT id, razao_social, nome_fantasia, cnpj FROM empresa";
 
