@@ -76,6 +76,8 @@ class EmpresaController
         return $tabelaHTML;
     }
 
+    
+
     public function excluirEmpresa($id)
     {
         if ($this->empresa->Excluir($id)) {

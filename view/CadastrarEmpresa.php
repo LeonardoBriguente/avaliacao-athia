@@ -1,7 +1,5 @@
 <?php
 require_once "../controller/setorController.php";
-
-$setores = $controller->listarSetores(); 
 ?>
 
 <!DOCTYPE html>
@@ -60,6 +58,7 @@ $setores = $controller->listarSetores();
                     </div>
                     <div class="setores-dropdown">
                         <?php
+                        
                         foreach ($setores as $setor) {
                             echo '<div class="por-setor">';
                             echo '<label class="dropdown">';

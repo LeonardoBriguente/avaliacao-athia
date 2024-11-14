@@ -74,6 +74,11 @@ class SetorController
         return $tabelaHTML;
     }
 
+    public function seletorDropdown()
+    {
+        $stmt = $this->setor->ConsultarTodos();
+        return $stmt->fetchAll(PDO::FETCH_ASSOC);
+    }
 
     public function excluirSetor($id)
     {
