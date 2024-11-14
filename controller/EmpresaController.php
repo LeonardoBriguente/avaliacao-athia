@@ -18,11 +18,11 @@ class EmpresaController
     {
         if ($this->empresa->Cadastrar($razao_social, $nome_fantasia, $cnpj, $setores)) {
             echo "<script type='text/javascript'>alert('Cadastro realizado com sucesso.');</script>";
-            echo "<script type='text/javascript'>window.location.href = '../view/cadastrarEmpresas.php';</script>";
+            echo "<script type='text/javascript'>window.location.href = '../view/cadastrarEmpresa.php';</script>";
             exit();
         } else {
             echo "<script type='text/javascript'>alert('Falha ao cadastrar.');</script>";
-            echo "<script type='text/javascript'>window.location.href = '../view/cadastrarEmpresas.php';</script>";
+            echo "<script type='text/javascript'>window.location.href = '../view/cadastrarEmpresa.php';</script>";
             exit();
         }
     }
