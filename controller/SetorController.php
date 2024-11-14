@@ -90,6 +90,19 @@ class SetorController
         }
     }
 
+    public function editarSetor($id, $descricao)
+    {
+        if ($this->setor->Atualizar($id, $descricao)) {
+            echo "<script type='text/javascript'>alert('Setor atualizado com sucesso.');</script>";
+            echo "<script type='text/javascript'>window.location.href = '../view/cadastrarSetores.php';</script>";
+            exit();
+        } else {
+            echo "<script type='text/javascript'>alert('Falha ao atualizar o setor.');</script>";
+            echo "<script type='text/javascript'>window.location.href = '../view/cadastrarSetores.php';</script>";
+            exit();
+        }
+    }
+
     public function verificarAcao()
     {
         if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['acao'])) {
@@ -99,6 +112,12 @@ class SetorController
                 case 'cadastrar':
                     $descricao = $_POST['descricao'];
                     $this->createSetor($descricao);
+                    break;
+
+                case 'editar':
+                    $id = $_POST['id'];
+                    $descricao = $_POST['descricao'];
+                    $this->editarSetor($id, $descricao);
                     break;
             }
         }
