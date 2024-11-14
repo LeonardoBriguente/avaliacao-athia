@@ -244,17 +244,32 @@ section.tabela {
 
     & thead {
         background-color: rgba(0, 119, 182, 0.4);
-        /* Cor de fundo para o cabeçalho */
         color: black;
     }
 
     & tbody tr:nth-child(even) {
         background-color: #f2f2f2;
-        /* Cor de fundo para linhas pares */
     }
 
     & tbody tr:hover {
         background-color: #e9f5ff;
-        /* Cor de fundo ao passar o mouse */
+    }
+
+    & button.editar, button.excluir {
+        background: none;
+        border: none;
+        cursor: pointer;
+        margin: 0 0.5rem;
+        font-size: 1.2rem;
+        color: var(--primary-color);
+        transition: color 0.3s;
+    }
+    
+    & button.editar:hover {
+        color: #28a745; /* Verde para o hover no botão de editar */
+    }
+    
+    & button.excluir:hover {
+        color: #dc3545; /* Vermelho para o hover no botão de excluir */
     }
 }

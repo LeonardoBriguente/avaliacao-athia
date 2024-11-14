@@ -9,6 +9,8 @@
     <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" type="text/css" href="assets/css/cadastrarEmpresa.css">
     <script type="text/javascript" src="assets/js/cadastroEmpresa.js" defer></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+
 
     <title>SmartGestão</title>
 </head>
@@ -103,28 +105,49 @@
                 <tr>
                     <th>Empresas</th>
                     <th>Setores</th>
+                    <th>Ações</th>
                 </tr>
             </thead>
             <tbody>
                 <tr>
                     <td>Microsoft</td>
                     <td>Financeiro, RH, TI</td>
+                    <td>
+                        <button class="editar"><i class="fas fa-edit"></i></button>
+                        <button class="excluir"><i class="fas fa-trash-alt"></i></button>
+                    </td>
                 </tr>
                 <tr>
                     <td>Facebook</td>
                     <td>Marketing, Jurídico</td>
+                    <td>
+                        <button class="editar"><i class="fas fa-edit"></i></button>
+                        <button class="excluir"><i class="fas fa-trash-alt"></i></button>
+                    </td>
                 </tr>
                 <tr>
                     <td>Instagram</td>
                     <td>Comercial</td>
+                    <td>
+                        <button class="editar"><i class="fas fa-edit"></i></button>
+                        <button class="excluir"><i class="fas fa-trash-alt"></i></button>
+                    </td>
                 </tr>
                 <tr>
                     <td>Apple</td>
                     <td>Operacional, Logístico</td>
+                    <td>
+                        <button class="editar"><i class="fas fa-edit"></i></button>
+                        <button class="excluir"><i class="fas fa-trash-alt"></i></button>
+                    </td>
                 </tr>
                 <tr>
                     <td>Americanas</td>
                     <td>Administrativo</td>
+                    <td>
+                        <button class="editar"><i class="fas fa-edit"></i></button>
+                        <button class="excluir"><i class="fas fa-trash-alt"></i></button>
+                    </td>
                 </tr>
             </tbody>
         </table>
