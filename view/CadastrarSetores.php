@@ -1,3 +1,10 @@
+<?php
+require_once '../controller/SetorController.php';
+
+$controller = new SetorController();
+$tabela = $controller->listarSetores();
+?>
+
 <!DOCTYPE html>
 <html lang="tp-br">
 
@@ -45,52 +52,7 @@
 
     <section class="tabela">
         <h2>Empresas e Setores</h2>
-
-        <table>
-            <thead>
-                <tr>
-                    <th>Setores</th>
-                    <th>Ações</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-                    <td>Financeiro</td>
-                    <td>
-                        <button class="editar" onclick="editarLinha(this)"><i class="fas fa-edit"></i></button>
-                        <button class="excluir" onclick="excluirLinha(this)"><i class="fas fa-trash-alt"></i></button>
-                    </td>
-                </tr>
-                <tr>
-                    <td>Marketing</td>
-                    <td>
-                        <button class="editar" onclick="editarLinha(this)"><i class="fas fa-edit"></i></button>
-                        <button class="excluir" onclick="excluirLinha(this)"><i class="fas fa-trash-alt"></i></button>
-                    </td>
-                </tr>
-                <tr>
-                    <td>Comercial</td>
-                    <td>
-                        <button class="editar" onclick="editarLinha(this)"><i class="fas fa-edit"></i></button>
-                        <button class="excluir" onclick="excluirLinha(this)"><i class="fas fa-trash-alt"></i></button>
-                    </td>
-                </tr>
-                <tr>
-                    <td>Operacional</td>
-                    <td>
-                        <button class="editar" onclick="editarLinha(this)"><i class="fas fa-edit"></i></button>
-                        <button class="excluir" onclick="excluirLinha(this)"><i class="fas fa-trash-alt"></i></button>
-                    </td>
-                </tr>
-                <tr>
-                    <td>Administrativo</td>
-                    <td>
-                        <button class="editar" onclick="editarLinha(this)"><i class="fas fa-edit"></i></button>
-                        <button class="excluir" onclick="excluirLinha(this)"><i class="fas fa-trash-alt"></i></button>
-                    </td>
-                </tr>
-            </tbody>
-        </table>
+        <?php echo $tabela?>
     </section>
 
     <section class="modal" id="modal-edicao">

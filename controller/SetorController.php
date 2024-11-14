@@ -34,10 +34,38 @@ class SetorController
     public function listarSetores()
     {
         $stmt = $this->setor->ConsultarTodos();
+        $tabelaHTML = '';
+
         while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
-            extract($row);
-            echo "ID: $id | Descrição: $descricao<br>";
+            $id = $row['id'];
+            $descricao = $row['descricao'];
+
+            $tabelaHTML .= "
+                <tr>
+                    <td>$descricao</td>
+                    <td>
+                        <button class='editar' onclick='editarLinha(this)'><i class='fas fa-edit'></i></button>
+                        <button class='excluir' onclick='excluirLinha(this)'><i class='fas fa-trash-alt'></i></button>
+                    </td>
+                </tr>
+            ";
         }
+
+        $tabelaHTML = "
+            <table>
+                <thead>
+                    <tr>
+                        <th>Setores</th>
+                        <th>Ações</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    $tabelaHTML
+                </tbody>
+            </table>
+        ";
+
+        return $tabelaHTML;
     }
 }
 
