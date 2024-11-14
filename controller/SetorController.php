@@ -14,23 +14,23 @@ class SetorController
         $this->setor = new Setor($db);
     }
 
-    // Método para cadastrar um setor
+
     public function createSetor($descricao)
     {
         if ($this->setor->Cadastrar($descricao)) {
-            // Exibe mensagem de sucesso
+
             echo "<script type='text/javascript'>alert('Cadastro realizado com sucesso.');</script>";
             echo "<script type='text/javascript'>window.location.href = '../view/cadastrarSetores.php';</script>";
             exit();
         } else {
-            // Exibe mensagem de erro
+
             echo "<script type='text/javascript'>alert('Falha ao cadastrar.');</script>";
             echo "<script type='text/javascript'>window.location.href = '../view/cadastrarSetores.php';</script>";
             exit();
         }
     }
 
-    // Método para listar setores
+
     public function listarSetores()
     {
         $stmt = $this->setor->ConsultarTodos();
@@ -40,7 +40,7 @@ class SetorController
             $id = $row['id'];
             $descricao = $row['descricao'];
 
-            // Criação dos botões de ações, incluindo o botão de excluir
+
             $excluirLink = "<a class='icon-trash' href='../controller/SetorController.php?acao=excluir&id=$id' onclick='return confirm(\"Você tem certeza que deseja excluir?\")'>
                                 <i class='fas fa-trash-alt'></i>
                              </a>";
@@ -56,7 +56,7 @@ class SetorController
             ";
         }
 
-        // Montagem da tabela completa
+
         $tabelaHTML = "
             <table>
                 <thead>
@@ -74,23 +74,22 @@ class SetorController
         return $tabelaHTML;
     }
 
-    // Método para excluir um setor
+
     public function excluirSetor($id)
     {
         if ($this->setor->Excluir($id)) {
-            // Exibe mensagem de sucesso na exclusão
+
             echo "<script type='text/javascript'>alert('Setor excluído com sucesso.');</script>";
             echo "<script type='text/javascript'>window.location.href = '../view/cadastrarSetores.php';</script>";
             exit();
         } else {
-            // Exibe mensagem de erro na exclusão
+
             echo "<script type='text/javascript'>alert('Falha ao excluir o setor.');</script>";
             echo "<script type='text/javascript'>window.location.href = '../view/cadastrarSetores.php';</script>";
             exit();
         }
     }
 
-    // Método para verificar as ações recebidas
     public function verificarAcao()
     {
         if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['acao'])) {
@@ -101,7 +100,6 @@ class SetorController
                     $descricao = $_POST['descricao'];
                     $this->createSetor($descricao);
                     break;
-                // Adicione outros casos conforme necessário
             }
         }
 
