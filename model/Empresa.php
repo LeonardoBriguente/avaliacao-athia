@@ -38,15 +38,33 @@ class Empresa
         return $stmt;
     }
 
-    public function ConsultarPorId()
+    public function Excluir($id)
     {
-        $query = "SELECT id, razao_social, nome_fantasia, cnpj FROM empresa WHERE id = :id";
-
+        $query = "DELETE FROM emmpresa WHERE id = :id";
         $stmt = $this->pdo->prepare($query);
-        $stmt->bindParam(":id", $this->id);
-        $stmt->execute();
+        $stmt->bindParam(':id', $id);
 
-        return $stmt;
+        if ($stmt->execute()) {
+            return true;
+        }
+        return false;
+    }
+
+
+    public function Atualizar($id, $razao_social, $nome_fantasia, $cnpj)
+    {
+        $query = "UPDATE empresa SET razao_social = :razao_social, nome_fantasia = :nome_fantasia, cnpj = :cnpj WHERE id = :id";
+        $stmt = $this->pdo->prepare($query);
+
+        $stmt->bindParam(':id', $id);
+        $stmt->bindParam(':razao_social', $razao_social);
+        $stmt->bindParam(':nome_fantasia', $nome_fantasia);
+        $stmt->bindParam(':cnpj', $cnpj);
+
+        if ($stmt->execute()) {
+            return true;
+        }
+        return false;
     }
 }
 ?>
