@@ -28,88 +28,86 @@ class EmpresaController
     }
 
     public function listarEmpresas()
-    {
-        $stmt = $this->empresa->ConsultarTodas();
-        $tabelaHTML = '';
+{
+    $stmt = $this->empresa->ConsultarTodas();
+    $tabelaHTML = '';
 
-        while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
-            $id = $row['id'];
-            $razao_social = $row['razao_social'];
-            $nome_fantasia = $row['nome_fantasia'];
-            $cnpj = $row['cnpj'];
+    while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
+        $id = $row['id'];
+        $razao_social = $row['razao_social'];
+        $nome_fantasia = $row['nome_fantasia'];
+        $cnpj = $row['cnpj'];
 
-            $setoresStmt = $this->empresa->ConsultarSetoresPorEmpresa($id);
-            $setores = [];
-            while ($setor = $setoresStmt->fetch(PDO::FETCH_ASSOC)) {
-                $setores[] = $setor['descricao'];
-            }
-
-            $setoresTexto = implode(', ', $setores);
-
-            $editarLink = "<button class='editar' onclick=\"abrirModalEdicaoEmpresa('$id', '$razao_social', '$nome_fantasia', '$cnpj')\"><i class='fas fa-edit'></i></button>";
-            $excluirLink = "<a class='icon-trash' href='?acao=excluir&id=$id' onclick='return confirm(\"Você tem certeza que deseja excluir?\")'>
-                                <i class='fas fa-trash-alt'></i>
-                            </a>";
-
-            $tabelaHTML .= "
-                <tr>
-                    <td>$razao_social</td>
-                    <td>$setoresTexto</td>
-                    <td>$cnpj</td>
-                    <td>
-                        $editarLink
-                        $excluirLink
-                    </td>
-                </tr>
-            ";
+        $setoresStmt = $this->empresa->ConsultarSetoresPorEmpresa($id);
+        $setores = [];
+        while ($setor = $setoresStmt->fetch(PDO::FETCH_ASSOC)) {
+            $setores[] = $setor['descricao'];
         }
 
-        $tabelaHTML = "
-            <table>
-                <thead>
-                    <tr>
-                        <th>Razão Social</th>
-                        <th>Setores</th>
-                        <th>CNPJ</th>
-                        <th>Ações</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    $tabelaHTML
-                </tbody>
-            </table>
+        $setoresTexto = implode(', ', $setores);
+
+        $editarLink = "<button class='editar' onclick=\"abrirModalEdicaoEmpresa('$id', '$razao_social', '$nome_fantasia', '$cnpj')\"><i class='fas fa-edit'></i></button>";
+        $excluirLink = "<a class='icon-trash' href='?acao=excluir&id=$id' onclick='return confirm(\"Você tem certeza que deseja excluir esta empresa?\")'>
+                            <i class='fas fa-trash-alt'></i>
+                        </a>";
+
+        $tabelaHTML .= "
+            <tr>
+                <td>$razao_social</td>
+                <td>$setoresTexto</td>
+                <td>$cnpj</td>
+                <td>
+                    $editarLink
+                    $excluirLink
+                </td>
+            </tr>
         ";
-
-        return $tabelaHTML;
     }
 
+    $tabelaHTML = "
+        <table>
+            <thead>
+                <tr>
+                    <th>Razão Social</th>
+                    <th>Setores</th>
+                    <th>CNPJ</th>
+                    <th>Ações</th>
+                </tr>
+            </thead>
+            <tbody>
+                $tabelaHTML
+            </tbody>
+        </table>
+    ";
 
+    return $tabelaHTML;
+}
 
-    public function excluirEmpresa($id)
-    {
-        if ($this->empresa->Excluir($id)) {
-            echo "<script type='text/javascript'>alert('Exclusão realizada com sucesso.');</script>";
-            echo "<script type='text/javascript'>window.location.href = '../view/cadastrarEmpresas.php';</script>";
-            exit();
-        } else {
-            echo "<script type='text/javascript'>alert('Falha ao excluir.');</script>";
-            echo "<script type='text/javascript'>window.location.href = '../view/cadastrarEmpresas.php';</script>";
-            exit();
-        }
+public function atualizarEmpresa($id, $razao_social, $nome_fantasia, $cnpj)
+{
+    if ($this->empresa->Atualizar($id, $razao_social, $nome_fantasia, $cnpj)) {
+        echo "<script type='text/javascript'>alert('Atualização realizada com sucesso.');</script>";
+        echo "<script type='text/javascript'>window.location.href = '../view/cadastrarEmpresa.php';</script>";
+        exit();
+    } else {
+        echo "<script type='text/javascript'>alert('Falha ao atualizar a empresa.');</script>";
+        echo "<script type='text/javascript'>window.location.href = '../view/cadastrarEmpresa.php';</script>";
+        exit();
     }
+}
 
-    public function atualizarEmpresa($id, $razao_social, $nome_fantasia, $cnpj)
-    {
-        if ($this->empresa->Atualizar($id, $razao_social, $nome_fantasia, $cnpj)) {
-            echo "<script type='text/javascript'>alert('Atualização realizada com sucesso.');</script>";
-            echo "<script type='text/javascript'>window.location.href = '../view/cadastrarEmpresas.php';</script>";
-            exit();
-        } else {
-            echo "<script type='text/javascript'>alert('Falha ao atualizar.');</script>";
-            echo "<script type='text/javascript'>window.location.href = '../view/cadastrarEmpresas.php';</script>";
-            exit();
-        }
+public function excluirEmpresa($id)
+{
+    if ($this->empresa->Excluir($id)) {
+        echo "<script type='text/javascript'>alert('Exclusão realizada com sucesso.');</script>";
+        echo "<script type='text/javascript'>window.location.href = '../view/cadastrarEmpresa.php';</script>";
+        exit();
+    } else {
+        echo "<script type='text/javascript'>alert('Falha ao excluir a empresa.');</script>";
+        echo "<script type='text/javascript'>window.location.href = '../view/cadastrarEmpresa.php';</script>";
+        exit();
     }
+}
 
     public function verificarAcao()
     {
