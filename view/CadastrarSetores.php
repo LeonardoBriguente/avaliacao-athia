@@ -58,7 +58,7 @@ $tabela = $controller->listarSetores();
         <h2>Empresas e Setores</h2>
         <?php
             if (isset($_SESSION['mensagem'])) {
-                echo "<p>{$_SESSION['mensagem']}</p>";
+                echo "<script type='text/javascript'>alert('{$_SESSION['mensagem']}');</script>";
                 unset($_SESSION['mensagem']);
             }
 
