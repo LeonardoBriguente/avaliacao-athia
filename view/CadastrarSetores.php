@@ -11,7 +11,6 @@
     <script type="text/javascript" src="assets/js/cadastroSetores.js" defer></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
 
-
     <title>SmartGestão</title>
 </head>
 
@@ -28,9 +27,14 @@
             <a class="link" href="view/relatorios.php">Relatórios</a>
         </div>
     </header>
+
     <main>
-        <h1 class="titulo-page">Cadastro de empresas</h1>
-        <button type="button" class="btn-cadastrar" onclick="abrirModal()">Cadastrar nova empresa</button>
+        <h1 class="titulo-page">Cadastro de setores</h1>
+        <form>
+            <label for="descricao">Setor:</label>
+            <input type="text" id="descricao" name="descricao" placeholder="Ex: Recursos Humanos" required>
+        </form>
+        <button type="submit" class="btn-cadastrar">Cadastrar setor</button>
     </main>
 
     
@@ -43,30 +47,26 @@
         <table>
             <thead>
                 <tr>
-                    <th>Empresas</th>
                     <th>Setores</th>
                     <th>Ações</th>
                 </tr>
             </thead>
             <tbody>
                 <tr>
-                    <td>Microsoft</td>
-                    <td>Financeiro, RH, TI</td>
+                    <td>Financeiro</td>
                     <td>
                         <button class="editar" onclick="editarLinha(this)"><i class="fas fa-edit"></i></button>
                         <button class="excluir" onclick="excluirLinha(this)"><i class="fas fa-trash-alt"></i></button>
                     </td>
                 </tr>
                 <tr>
-                    <td>Facebook</td>
-                    <td>Marketing, Jurídico</td>
+                    <td>Marketing</td>
                     <td>
                         <button class="editar" onclick="editarLinha(this)"><i class="fas fa-edit"></i></button>
                         <button class="excluir" onclick="excluirLinha(this)"><i class="fas fa-trash-alt"></i></button>
                     </td>
                 </tr>
                 <tr>
-                    <td>Instagram</td>
                     <td>Comercial</td>
                     <td>
                         <button class="editar" onclick="editarLinha(this)"><i class="fas fa-edit"></i></button>
@@ -74,15 +74,13 @@
                     </td>
                 </tr>
                 <tr>
-                    <td>Apple</td>
-                    <td>Operacional, Logístico</td>
+                    <td>Operacional</td>
                     <td>
                         <button class="editar" onclick="editarLinha(this)"><i class="fas fa-edit"></i></button>
                         <button class="excluir" onclick="excluirLinha(this)"><i class="fas fa-trash-alt"></i></button>
                     </td>
                 </tr>
                 <tr>
-                    <td>Americanas</td>
                     <td>Administrativo</td>
                     <td>
                         <button class="editar" onclick="editarLinha(this)"><i class="fas fa-edit"></i></button>
