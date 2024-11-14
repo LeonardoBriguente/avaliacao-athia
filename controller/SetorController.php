@@ -74,7 +74,7 @@ class SetorController
         return $tabelaHTML;
     }
 
-    public function seletorDropdown()
+    public function setorDropdown()
     {
         $stmt = $this->setor->ConsultarTodos();
         return $stmt->fetchAll(PDO::FETCH_ASSOC);
