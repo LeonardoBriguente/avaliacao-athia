@@ -1,7 +1,7 @@
 <?php
 
-require_once './model/database.php';
-require_once './model/setor.php';
+require_once '../model/database.php';
+require_once '../model/setor.php';
 
 class SetorController
 {
@@ -17,9 +17,17 @@ class SetorController
     public function createSetor($descricao)
     {
         if ($this->setor->Cadastrar($descricao)) {
-            echo "Setor cadastrado com sucesso!";
+            $mensagem = "Cadastro realizado com sucesso.";
+            echo "<script type='text/javascript'>alert('$mensagem');</script>";
+
+            echo "<script type='text/javascript'>window.location.href = '../view/cadastrarSetores.php';</script>";
+            exit();
         } else {
-            echo "Falha ao cadastrar o setor.";
+            $mensagem = "Falha ao cadastrar.";
+            echo "<script type='text/javascript'>alert('$mensagem');</script>";
+
+            echo "<script type='text/javascript'>window.location.href = '../view/cadastrarSetores.php';</script>";
+            exit();
         }
     }
 
@@ -38,10 +46,11 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['acao'])) {
 
     switch ($_POST['acao']) {
         case 'cadastrar':
-            $resultado = $controller->createSetor($_POST);
+            $descricao = $_POST['descricao'];
+            $resultado = $controller->createSetor($descricao);
 
             if ($resultado == true) {
-                echo $resultado;
+                // echo $resultado;
             }
             break;
 
@@ -51,5 +60,5 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['acao'])) {
             $resultado = "false";
             break;
     }
-    echo $resultado;
+    // echo $resultado;
 }
