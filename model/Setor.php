@@ -49,7 +49,7 @@ class Setor
 
     public function Atualizar($id, $descricao)
     {
-        $query = "UPDATE setores SET descricao = :descricao WHERE id = :id";
+        $query = "UPDATE setor SET descricao = :descricao WHERE id = :id";
         $stmt = $this->pdo->prepare($query);
 
         $stmt->bindParam(':descricao', $descricao);
