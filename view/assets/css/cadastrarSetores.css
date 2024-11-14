@@ -63,6 +63,14 @@ header.cabecalho {
     }
 }
 
+a.icon-trash{
+    color: black;
+
+    &:hover{
+        color: #dc3545
+    }
+}
+
 main {
     width: 30rem;
     margin: 0 auto;

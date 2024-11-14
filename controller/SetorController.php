@@ -40,8 +40,8 @@ class SetorController
             $id = $row['id'];
             $descricao = $row['descricao'];
 
-            // Link para exclusão do setor ao clicar na lixeira
-            $excluirLink = "<a href='?excluir=$id' onclick='return confirm(\"Você tem certeza que deseja excluir?\")'>
+
+            $excluirLink = "<a class='icon-trash' href='?excluir=$id' onclick='return confirm(\"Você tem certeza que deseja excluir?\")'>
                                 <i class='fas fa-trash-alt'></i>
                              </a>";
 
@@ -73,7 +73,7 @@ class SetorController
         return $tabelaHTML;
     }
 
-    // Método para excluir um setor
+
     public function excluirSetor($id)
     {
         if ($this->setor->Excluir($id)) {
