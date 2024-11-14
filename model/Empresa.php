@@ -13,22 +13,28 @@ class Empresa
 
     public function Cadastrar($razao_social, $nome_fantasia, $cnpj, $setores)
     {
-        $query = "INSERT INTO empresa (razao_social, nome_fantasia, cnpj) VALUES (:razao_social, :nome_fantasia, :cnpj)";
-        $stmt = $this->pdo->prepare($query);
+        $this->pdo->beginTransaction();
 
-        $stmt->bindParam(':razao_social', $razao_social);
-        $stmt->bindParam(':nome_fantasia', $nome_fantasia);
-        $stmt->bindParam(':cnpj', $cnpj);
+        try {
+            $query = "INSERT INTO empresa (razao_social, nome_fantasia, cnpj) VALUES (:razao_social, :nome_fantasia, :cnpj)";
+            $stmt = $this->pdo->prepare($query);
+            $stmt->bindParam(':razao_social', $razao_social);
+            $stmt->bindParam(':nome_fantasia', $nome_fantasia);
+            $stmt->bindParam(':cnpj', $cnpj);
+            $stmt->execute();
 
-        if ($stmt->execute()) {
             $empresaId = $this->pdo->lastInsertId();
+
             foreach ($setores as $setor) {
                 $this->AssociarSetorAEmpresa($empresaId, $setor);
             }
-            return true;
-        }
 
-        return false;
+            $this->pdo->commit();
+            return true;
+        } catch (Exception $e) {
+            $this->pdo->rollBack();
+            return false;
+        }
     }
 
     private function AssociarSetorAEmpresa($empresaId, $setor)
@@ -52,7 +58,7 @@ class Empresa
 
     public function Excluir($id)
     {
-        $query = "DELETE FROM emmpresa WHERE id = :id";
+        $query = "DELETE FROM empresa WHERE id = :id";
         $stmt = $this->pdo->prepare($query);
         $stmt->bindParam(':id', $id);
 
@@ -78,14 +84,20 @@ class Empresa
         }
         return false;
     }
-    
+
     public function ConsultarSetoresPorEmpresa($empresaId)
     {
-        $query = "SELECT descricao FROM setores WHERE empresa_id = :empresa_id";
+        $query = "
+        SELECT s.descricao
+        FROM empresa_setor es
+        JOIN setor s ON es.setor_id = s.id
+        WHERE es.empresa_id = :empresa_id
+    ";
+
         $stmt = $this->pdo->prepare($query);
         $stmt->bindParam(':empresa_id', $empresaId);
         $stmt->execute();
+
         return $stmt;
     }
 }
-?>

@@ -83,7 +83,7 @@ class EmpresaController
         return $tabelaHTML;
     }
 
-    
+
 
     public function excluirEmpresa($id)
     {
@@ -121,10 +121,9 @@ class EmpresaController
                     $razao_social = $_POST['razao-social'];
                     $nome_fantasia = $_POST['nome-fantasia'];
                     $cnpj = $_POST['cnpj'];
-                    $setores = isset($_POST['setores']) ? implode(',', $_POST['setores']) : '';
+                    $setores = isset($_POST['setores']) ? $_POST['setores'] : [];
 
                     $this->createEmpresa($razao_social, $nome_fantasia, $cnpj, $setores);
-                    break;
 
                 case 'editar':
                     $id = $_POST['id'];

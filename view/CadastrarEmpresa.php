@@ -1,5 +1,6 @@
 <?php
 require_once "../controller/setorController.php";
+require_once "../controller/empresaController.php";
 ?>
 
 <!DOCTYPE html>
@@ -59,11 +60,12 @@ require_once "../controller/setorController.php";
                     </div>
                     <div class="setores-dropdown">
                         <?php
+                        $controller = new SetorController();
                         $setores = $controller->setorDropdown();
                         foreach ($setores as $setor) {
                             echo '<div class="por-setor">';
                             echo '<label class="dropdown">';
-                            echo '<input type="checkbox" name="setores[]" value="' . $setor['descricao'] . '"> ' . ucfirst($setor['descricao']);
+                            echo '<input type="checkbox" name="setores[]" value="' . $setor['id'] . '"> ' . ucfirst($setor['descricao']);
                             echo '</label>';
                             echo '</div>';
                         }
@@ -81,7 +83,12 @@ require_once "../controller/setorController.php";
     <section class="tabela">
         <h2>Empresas e Setores</h2>
 
-        <table>
+        <?php
+        $empresaController = new EmpresaController();
+        echo $empresaController->listarEmpresas();
+        ?>
+
+        <!-- <table>
             <thead>
                 <tr>
                     <th>Empresas</th>
@@ -131,7 +138,7 @@ require_once "../controller/setorController.php";
                     </td>
                 </tr>
             </tbody>
-        </table>
+        </table> -->
     </section>
 
     <section class="modal" id="modal-edicao">
