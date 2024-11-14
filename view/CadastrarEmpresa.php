@@ -26,10 +26,10 @@
             <a class="link" href="view/relatorios.php">Relatórios</a>
         </div>
     </header>
-
-    <h1>Cadastro de empresas</h1>
-    <button type="button" class="btn-cadastrar" onclick="abrirModal()">Cadastrar Empresa</button>
-
+    <main>
+        <h1 class="titulo-page">Cadastro de empresas</h1>
+        <button type="button" class="btn-cadastrar" onclick="abrirModal()">Cadastrar nova empresa</button>
+    </main>
 
     <section class="modal" id="modal-cadastro">
         <div class="modal-conteudo">
@@ -91,6 +91,43 @@
                 <button type="submit" class="btn-salvar">Cadastrar</button>
             </form>
         </div>
+    </section>
+
+    <hr>
+
+    <section class="tabela">
+        <h2>Empresas e Setores</h2>
+
+        <table>
+            <thead>
+                <tr>
+                    <th>Empresas</th>
+                    <th>Setores</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Microsoft</td>
+                    <td>Financeiro, RH, TI</td>
+                </tr>
+                <tr>
+                    <td>Facebook</td>
+                    <td>Marketing, Jurídico</td>
+                </tr>
+                <tr>
+                    <td>Instagram</td>
+                    <td>Comercial</td>
+                </tr>
+                <tr>
+                    <td>Apple</td>
+                    <td>Operacional, Logístico</td>
+                </tr>
+                <tr>
+                    <td>Americanas</td>
+                    <td>Administrativo</td>
+                </tr>
+            </tbody>
+        </table>
     </section>
 </body>
 

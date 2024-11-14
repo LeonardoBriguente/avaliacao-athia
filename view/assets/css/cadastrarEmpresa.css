@@ -14,6 +14,13 @@ html {
     font-family: 'Nunito', sans-serif;
 }
 
+body{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
 & a {
     text-decoration: none;
     color: #ffffff;
@@ -53,6 +60,29 @@ header.cabecalho {
         & a.link-meio {
             margin: 0 1.5rem;
         }
+    }
+}
+
+main {
+    width: 30rem;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    & h1.titulo-page {
+        margin-top: 1rem;
+        margin-bottom: 1.5rem;
+    }
+
+    & button.btn-cadastrar {
+        padding: 0.5rem 1.5rem;
+        background-color: var(--second-color);
+        color: #fff;
+        border: 1px solid black;
+        cursor: pointer;
+        border-radius: 0.5rem;
+        font-size: 1rem;
     }
 }
 
@@ -99,7 +129,7 @@ div.modal-conteudo {
             font-weight: bold;
         }
 
-        & input{
+        & input {
             width: 15rem;
             padding: 0.3rem;
             margin-bottom: 0.5rem;
@@ -140,7 +170,7 @@ div.modal-conteudo {
                 overflow-y: auto;
             }
 
-            & div.por-setor{
+            & div.por-setor {
                 display: flex;
                 align-items: center;
                 justify-content: flex-start;
@@ -149,7 +179,7 @@ div.modal-conteudo {
             & div.setores-dropdown input {
                 width: 2rem;
 
-                &:hover{
+                &:hover {
                     cursor: pointer;
                 }
             }
@@ -176,5 +206,55 @@ div.modal-conteudo {
         right: 1rem;
         font-size: 2rem;
         cursor: pointer;
+    }
+}
+
+hr {
+    width: 90%;
+    margin: 1.5rem 0 1rem 0;
+    height: 1px;
+    background-color: black;
+}
+
+section.tabela {
+    margin: 0 auto;
+
+    & h2{
+        width: 14.2rem;
+        margin: 0 auto;
+    }
+
+    & table {
+        width: 50rem;
+        border-collapse: collapse;
+        margin-top: 1rem;
+        font-size: 1rem;
+    }
+
+    & th{
+        font-size: 1.5rem;
+    }
+
+    & th,
+    td {
+        border: 1px solid black;
+        padding: 0.8rem;
+        text-align: center;
+    }
+
+    & thead {
+        background-color: rgba(0, 119, 182, 0.4);
+        /* Cor de fundo para o cabeçalho */
+        color: black;
+    }
+
+    & tbody tr:nth-child(even) {
+        background-color: #f2f2f2;
+        /* Cor de fundo para linhas pares */
+    }
+
+    & tbody tr:hover {
+        background-color: #e9f5ff;
+        /* Cor de fundo ao passar o mouse */
     }
 }
