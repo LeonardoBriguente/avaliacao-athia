@@ -29,25 +29,37 @@ class EmpresaController
 
     public function listarEmpresas()
     {
-        $stmt = $this->empresa->ConsultarTodas();
+        $stmt = $this->empresa->ConsultarTodas();  // Pega as empresas
         $tabelaHTML = '';
 
+        // Para cada empresa, pega os setores e monta o HTML
         while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
             $id = $row['id'];
             $razao_social = $row['razao_social'];
             $nome_fantasia = $row['nome_fantasia'];
             $cnpj = $row['cnpj'];
 
-            $editarLink = "<button class='editar' onclick=\"abrirModalEdicaoEmpresa('$id', '$razao_social', '$nome_fantasia', '$cnpj')\"><i class='fas fa-edit'></i></button>";
+            // Buscar setores da empresa
+            $setoresStmt = $this->empresa->ConsultarSetoresPorEmpresa($id);
+            $setores = [];
+            while ($setor = $setoresStmt->fetch(PDO::FETCH_ASSOC)) {
+                $setores[] = $setor['descricao'];
+            }
 
+            // Transformar setores em uma string separada por vírgulas
+            $setoresTexto = implode(', ', $setores);
+
+            // Gerar os links de ação (editar e excluir)
+            $editarLink = "<button class='editar' onclick=\"abrirModalEdicaoEmpresa('$id', '$razao_social', '$nome_fantasia', '$cnpj')\"><i class='fas fa-edit'></i></button>";
             $excluirLink = "<a class='icon-trash' href='?acao=excluir&id=$id' onclick='return confirm(\"Você tem certeza que deseja excluir?\")'>
                                 <i class='fas fa-trash-alt'></i>
                             </a>";
 
+            // Montar a linha da tabela
             $tabelaHTML .= "
                 <tr>
                     <td>$razao_social</td>
-                    <td>$nome_fantasia</td>
+                    <td>$setoresTexto</td>
                     <td>$cnpj</td>
                     <td>
                         $editarLink
@@ -62,7 +74,7 @@ class EmpresaController
                 <thead>
                     <tr>
                         <th>Razão Social</th>
-                        <th>Nome Fantasia</th>
+                        <th>Setores</th>
                         <th>CNPJ</th>
                         <th>Ações</th>
                     </tr>
