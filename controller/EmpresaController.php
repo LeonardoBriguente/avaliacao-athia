@@ -111,8 +111,8 @@ class EmpresaController
 
             switch ($acao) {
                 case 'cadastrar':
-                    $razao_social = $_POST['razao_social'];
-                    $nome_fantasia = $_POST['nome_fantasia'];
+                    $razao_social = $_POST['razao-social'];
+                    $nome_fantasia = $_POST['nome-fantasia'];
                     $cnpj = $_POST['cnpj'];
                     $setores = isset($_POST['setores']) ? implode(',', $_POST['setores']) : '';
 

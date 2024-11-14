@@ -42,6 +42,7 @@ require_once "../controller/setorController.php";
             <span class="fechar" onclick="fecharModal()">&times;</span>
             <h2 class="title-form">Cadastrar Empresa</h2>
             <form action="../controller/empresaController.php" method="post">
+                <input type="hidden" name="acao" value="cadastrar">
                 <label for="razao-social">Razão Social</label>
                 <input type="text" id="razao-social" name="razao-social" placeholder="Ex: Fulano LTDA" required>
 
