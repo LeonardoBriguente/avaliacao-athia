@@ -14,18 +14,23 @@ class SetorController
         $this->setor = new Setor($db);
     }
 
+    // Método para cadastrar um setor
     public function createSetor($descricao)
     {
         if ($this->setor->Cadastrar($descricao)) {
-            $_SESSION['mensagem'] = "Cadastro realizado com sucesso.";
+            // Exibe mensagem de sucesso
+            echo "<script type='text/javascript'>alert('Cadastro realizado com sucesso.');</script>";
+            echo "<script type='text/javascript'>window.location.href = '../view/cadastrarSetores.php';</script>";
+            exit();
         } else {
-            $_SESSION['mensagem'] = "Falha ao cadastrar.";
+            // Exibe mensagem de erro
+            echo "<script type='text/javascript'>alert('Falha ao cadastrar.');</script>";
+            echo "<script type='text/javascript'>window.location.href = '../view/cadastrarSetores.php';</script>";
+            exit();
         }
-
-        header('Location: ../view/cadastrarSetores.php');  // Redireciona para a página de setores
-        exit();
     }
 
+    // Método para listar setores
     public function listarSetores()
     {
         $stmt = $this->setor->ConsultarTodos();
@@ -35,8 +40,8 @@ class SetorController
             $id = $row['id'];
             $descricao = $row['descricao'];
 
-
-            $excluirLink = "<a class='icon-trash' href='?excluir=$id' onclick='return confirm(\"Você tem certeza que deseja excluir?\")'>
+            // Criação dos botões de ações, incluindo o botão de excluir
+            $excluirLink = "<a class='icon-trash' href='../controller/SetorController.php?acao=excluir&id=$id' onclick='return confirm(\"Você tem certeza que deseja excluir?\")'>
                                 <i class='fas fa-trash-alt'></i>
                              </a>";
 
@@ -51,6 +56,7 @@ class SetorController
             ";
         }
 
+        // Montagem da tabela completa
         $tabelaHTML = "
             <table>
                 <thead>
@@ -68,46 +74,41 @@ class SetorController
         return $tabelaHTML;
     }
 
-
+    // Método para excluir um setor
     public function excluirSetor($id)
     {
         if ($this->setor->Excluir($id)) {
-            $_SESSION['mensagem'] = "Setor excluído com sucesso!";
+            // Exibe mensagem de sucesso na exclusão
+            echo "<script type='text/javascript'>alert('Setor excluído com sucesso.');</script>";
+            echo "<script type='text/javascript'>window.location.href = '../view/cadastrarSetores.php';</script>";
+            exit();
         } else {
-            $_SESSION['mensagem'] = "Falha ao excluir o setor.";
+            // Exibe mensagem de erro na exclusão
+            echo "<script type='text/javascript'>alert('Falha ao excluir o setor.');</script>";
+            echo "<script type='text/javascript'>window.location.href = '../view/cadastrarSetores.php';</script>";
+            exit();
         }
-        
-        header('Location: ../view/cadastrarSetores.php');  // Redireciona para a página de setores
-        exit();
     }
 
+    // Método para verificar as ações recebidas
     public function verificarAcao()
     {
-        if (isset($_GET['excluir'])) {
-            $id = $_GET['excluir'];
-            $this->excluirSetor($id); 
+        if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['acao'])) {
+            $acao = $_POST['acao'];
+
+            switch ($acao) {
+                case 'cadastrar':
+                    $descricao = $_POST['descricao'];
+                    $this->createSetor($descricao);
+                    break;
+                // Adicione outros casos conforme necessário
+            }
+        }
+
+        if (isset($_GET['acao']) && $_GET['acao'] === 'excluir' && isset($_GET['id'])) {
+            $id = $_GET['id'];
+            $this->excluirSetor($id);
         }
     }
 }
-
-if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['acao'])) {
-    $controller = new SetorController();
-
-    switch ($_POST['acao']) {
-        case 'cadastrar':
-            $descricao = $_POST['descricao'];
-            $resultado = $controller->createSetor($descricao);
-
-            if ($resultado == true) {
-                // echo $resultado;
-            }
-            break;
-
-
-            // Adicione mais casos conforme necessário
-        default:
-            $resultado = "false";
-            break;
-    }
-    // echo $resultado;
-}
+?>
