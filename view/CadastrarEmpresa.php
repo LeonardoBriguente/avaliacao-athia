@@ -58,7 +58,7 @@ require_once "../controller/setorController.php";
                     </div>
                     <div class="setores-dropdown">
                         <?php
-                        $setores = 
+                        $setores = $controller->setorDropdown();
                         foreach ($setores as $setor) {
                             echo '<div class="por-setor">';
                             echo '<label class="dropdown">';
