@@ -66,12 +66,5 @@ class Empresa
         }
         return false;
     }
-
-    public function listarSetores() {
-        $query = "SELECT * FROM setores";
-        $result = $this->pdo->query($query);
-        return $result->fetchAll(PDO::FETCH_ASSOC);
-    }
-    
 }
 ?>

@@ -1,3 +1,9 @@
+<?php
+require_once "../controller/setorController.php";
+
+$setores = $controller->listarSetores(); 
+?>
+
 <!DOCTYPE html>
 <html lang="tp-br">
 
@@ -53,40 +59,15 @@
                         <span id="setores-text">Selecionar setores</span>
                     </div>
                     <div class="setores-dropdown">
-                        <div class="por-setor">
-                            <label class="dropdown">
-                                <input type="checkbox" name="setores" value="administrativo">
-                                Administrativo
-                            </label>
-                        </div>
-
-                        <div class="por-setor">
-                            <label class="dropdown">
-                                <input type="checkbox" name="setores" value="financeiro">
-                                Financeiro
-                            </label>
-                        </div>
-
-                        <div class="por-setor">
-                            <label class="dropdown">
-                                <input type="checkbox" name="setores" value="marketing">
-                                Marketing
-                            </label>
-                        </div>
-
-                        <div class="por-setor">
-                            <label class="dropdown">
-                                <input type="checkbox" name="setores" value="tecnologia">
-                                Tecnologia
-                            </label>
-                        </div>
-
-                        <div class="por-setor">
-                            <label class="dropdown">
-                                <input type="checkbox" name="setores" value="recursos-humanos">
-                                Recursos Humanos
-                            </label>
-                        </div>
+                        <?php
+                        foreach ($setores as $setor) {
+                            echo '<div class="por-setor">';
+                            echo '<label class="dropdown">';
+                            echo '<input type="checkbox" name="setores[]" value="' . $setor['descricao'] . '"> ' . ucfirst($setor['descricao']);
+                            echo '</label>';
+                            echo '</div>';
+                        }
+                        ?>
                     </div>
                 </div>
 
