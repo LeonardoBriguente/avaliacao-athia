@@ -113,40 +113,40 @@
                     <td>Microsoft</td>
                     <td>Financeiro, RH, TI</td>
                     <td>
-                        <button class="editar"><i class="fas fa-edit"></i></button>
-                        <button class="excluir"><i class="fas fa-trash-alt"></i></button>
+                        <button class="editar" onclick="editarLinha(this)"><i class="fas fa-edit"></i></button>
+                        <button class="excluir" onclick="excluirLinha(this)"><i class="fas fa-trash-alt"></i></button>
                     </td>
                 </tr>
                 <tr>
                     <td>Facebook</td>
                     <td>Marketing, Jurídico</td>
                     <td>
-                        <button class="editar"><i class="fas fa-edit"></i></button>
-                        <button class="excluir"><i class="fas fa-trash-alt"></i></button>
+                        <button class="editar" onclick="editarLinha(this)"><i class="fas fa-edit"></i></button>
+                        <button class="excluir" onclick="excluirLinha(this)"><i class="fas fa-trash-alt"></i></button>
                     </td>
                 </tr>
                 <tr>
                     <td>Instagram</td>
                     <td>Comercial</td>
                     <td>
-                        <button class="editar"><i class="fas fa-edit"></i></button>
-                        <button class="excluir"><i class="fas fa-trash-alt"></i></button>
+                        <button class="editar" onclick="editarLinha(this)"><i class="fas fa-edit"></i></button>
+                        <button class="excluir" onclick="excluirLinha(this)"><i class="fas fa-trash-alt"></i></button>
                     </td>
                 </tr>
                 <tr>
                     <td>Apple</td>
                     <td>Operacional, Logístico</td>
                     <td>
-                        <button class="editar"><i class="fas fa-edit"></i></button>
-                        <button class="excluir"><i class="fas fa-trash-alt"></i></button>
+                        <button class="editar" onclick="editarLinha(this)"><i class="fas fa-edit"></i></button>
+                        <button class="excluir" onclick="excluirLinha(this)"><i class="fas fa-trash-alt"></i></button>
                     </td>
                 </tr>
                 <tr>
                     <td>Americanas</td>
                     <td>Administrativo</td>
                     <td>
-                        <button class="editar"><i class="fas fa-edit"></i></button>
-                        <button class="excluir"><i class="fas fa-trash-alt"></i></button>
+                        <button class="editar" onclick="editarLinha(this)"><i class="fas fa-edit"></i></button>
+                        <button class="excluir" onclick="excluirLinha(this)"><i class="fas fa-trash-alt"></i></button>
                     </td>
                 </tr>
             </tbody>

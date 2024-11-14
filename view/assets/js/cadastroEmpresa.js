@@ -49,6 +49,7 @@ class ModalEdicao extends ModalCadastro {
     constructor() {
         super();
         this.modalElement = document.querySelector('.modal#modal-edicao');
+        this.textElement = document.getElementById('edicao-setores-text');
     }
 
     abrirModal(empresa, setores) {
@@ -117,19 +118,21 @@ document.addEventListener('DOMContentLoaded', () => {
     const modalCadastro = new ModalCadastro();
     const tabelaEmpresas = new TabelaEmpresas();
 
-    // Eventos do modal de cadastro
     const btnAbrirModal = document.querySelector('.btn-cadastrar');
     if (btnAbrirModal) {
         btnAbrirModal.addEventListener('click', () => modalCadastro.abrirModal());
     }
 
-    const btnFecharModal = document.querySelector('.fechar');
-    if (btnFecharModal) {
-        btnFecharModal.addEventListener('click', () => modalCadastro.fecharModal());
-    }
+    const btnFecharModal = document.querySelectorAll('.fechar');
+    btnFecharModal.forEach(btn => {
+        btn.addEventListener('click', () => {
+            modalCadastro.fecharModal();
+            tabelaEmpresas.modalEdicao.fecharModal();
+        });
+    });
 
-    const btnToggleDropdown = document.querySelector('.setores-container');
-    if (btnToggleDropdown) {
-        btnToggleDropdown.addEventListener('click', () => modalCadastro.toggleSetoresDropdown());
-    }
+    const btnToggleDropdown = document.querySelectorAll('.setores-container');
+    btnToggleDropdown.forEach(btn => {
+        btn.addEventListener('click', () => modalCadastro.toggleSetoresDropdown());
+    });
 });
