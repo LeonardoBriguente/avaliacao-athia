@@ -1,7 +1,11 @@
 <?php
+session_start();
+
 require_once '../controller/SetorController.php';
 
 $controller = new SetorController();
+$controller->verificarAcao();
+
 $tabela = $controller->listarSetores();
 ?>
 
@@ -52,7 +56,14 @@ $tabela = $controller->listarSetores();
 
     <section class="tabela">
         <h2>Empresas e Setores</h2>
-        <?php echo $tabela?>
+        <?php
+            if (isset($_SESSION['mensagem'])) {
+                echo "<p>{$_SESSION['mensagem']}</p>";
+                unset($_SESSION['mensagem']);
+            }
+
+            echo $tabela;
+        ?>
     </section>
 
     <section class="modal" id="modal-edicao">

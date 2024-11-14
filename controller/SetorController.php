@@ -17,18 +17,13 @@ class SetorController
     public function createSetor($descricao)
     {
         if ($this->setor->Cadastrar($descricao)) {
-            $mensagem = "Cadastro realizado com sucesso.";
-            echo "<script type='text/javascript'>alert('$mensagem');</script>";
-
-            echo "<script type='text/javascript'>window.location.href = '../view/cadastrarSetores.php';</script>";
-            exit();
+            $_SESSION['mensagem'] = "Cadastro realizado com sucesso.";
         } else {
-            $mensagem = "Falha ao cadastrar.";
-            echo "<script type='text/javascript'>alert('$mensagem');</script>";
-
-            echo "<script type='text/javascript'>window.location.href = '../view/cadastrarSetores.php';</script>";
-            exit();
+            $_SESSION['mensagem'] = "Falha ao cadastrar.";
         }
+
+        header('Location: ../view/cadastrarSetores.php');  // Redireciona para a página de setores
+        exit();
     }
 
     public function listarSetores()
@@ -77,9 +72,21 @@ class SetorController
     public function excluirSetor($id)
     {
         if ($this->setor->Excluir($id)) {
-            return true;
+            $_SESSION['mensagem'] = "Setor excluído com sucesso!";
+        } else {
+            $_SESSION['mensagem'] = "Falha ao excluir o setor.";
         }
-        return false;
+        
+        header('Location: ../view/cadastrarSetores.php');  // Redireciona para a página de setores
+        exit();
+    }
+
+    public function verificarAcao()
+    {
+        if (isset($_GET['excluir'])) {
+            $id = $_GET['excluir'];
+            $this->excluirSetor($id); 
+        }
     }
 }
 
